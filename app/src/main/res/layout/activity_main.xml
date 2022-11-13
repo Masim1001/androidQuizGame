@@ -121,7 +121,7 @@
     </TableLayout>
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tv_bottomMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
