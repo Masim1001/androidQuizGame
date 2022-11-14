@@ -41,13 +41,26 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Button start_button = (Button) view;
                 start_button.setVisibility(View.INVISIBLE);
-                startGame();
+                nextTurn();
             }
         };
+        View.OnClickListener answerButtonClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Button buttonClicked = (Button) view;
+                int answerSelected = Integer.parseInt(buttonClicked.getText().toString());
+            }
+        };
+
         btn_start.setOnClickListener(startButtonClickListener);
+
+        btn_answer0.setOnClickListener(answerButtonClickListener);
+        btn_answer1.setOnClickListener(answerButtonClickListener);
+        btn_answer2.setOnClickListener(answerButtonClickListener);
+        btn_answer3.setOnClickListener(answerButtonClickListener);
     }
 
-    private void startGame(){
+    private void nextTurn(){
         //create a new Question
         //set text on answer buttons
         //enable answer buttons
