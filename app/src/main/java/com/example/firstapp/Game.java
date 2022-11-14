@@ -1,5 +1,6 @@
 package com.example.firstapp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -64,6 +65,7 @@ public class Game {
         totalQuestions = 0;
         score = 0;
         currentQuestion = new Question(10);
+        questions = new ArrayList<Question>();
     }
 
     public void makeNewQuestion()

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Button buttonClicked = (Button) view;
                 int answerSelected = Integer.parseInt(buttonClicked.getText().toString());
+
+                g.checkAnswer(answerSelected);
+                tv_score.setText(Integer.toString(g.getScore()));
+                nextTurn();
             }
         };
 
@@ -79,5 +84,6 @@ public class MainActivity extends AppCompatActivity {
         btn_answer3.setEnabled(true);
 
         tv_questions.setText(g.getCurrentQuestion().getQuestionPhrase());
+        tv_bottomMsg.setText(g.getNumCorrect() + "/" + (g.getTotalQuestions() - 1));
     }
 }
