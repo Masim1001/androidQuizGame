@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     Button btn_start, btn_answer0, btn_answer1, btn_answer2, btn_answer3;
     TextView tv_score, tv_questions, tv_timer, tv_bottomMsg;
     ProgressBar prog_timer;
+    Game g = new Game();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,18 @@ public class MainActivity extends AppCompatActivity {
         //set text on answer buttons
         //enable answer buttons
         //start the timer
+        g.makeNewQuestion();
+        int [] answer = g.getCurrentQuestion().getAnswerArray();
+        btn_answer0.setText(Integer.toString(answer[0]));
+        btn_answer1.setText(Integer.toString(answer[1]));
+        btn_answer2.setText(Integer.toString(answer[2]));
+        btn_answer3.setText(Integer.toString(answer[3]));
 
+        btn_answer0.setEnabled(true);
+        btn_answer1.setEnabled(true);
+        btn_answer2.setEnabled(true);
+        btn_answer3.setEnabled(true);
 
+        tv_questions.setText(g.getCurrentQuestion().getQuestionPhrase());
     }
 }
