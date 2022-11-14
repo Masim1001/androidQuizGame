@@ -3,6 +3,8 @@ package com.example.firstapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -15,6 +17,33 @@ public class MainActivity extends AppCompatActivity {
     TextView tv_score, tv_questions, tv_timer, tv_bottomMsg;
     ProgressBar prog_timer;
     Game g = new Game();
+    int secRemaining = 30;
+    CountDownTimer timer = new CountDownTimer(30000, 1000) {
+        @Override
+        public void onTick(long l) {
+            secRemaining--;
+            tv_timer.setText(Integer.toString(secRemaining) + "sec");
+            prog_timer.setProgress(30 - secRemaining);
+        }
+
+        @Override
+        public void onFinish() {
+            btn_answer0.setEnabled(false);
+            btn_answer1.setEnabled(false);
+            btn_answer2.setEnabled(false);
+            btn_answer3.setEnabled(false);
+            tv_bottomMsg.setText("Time is up!" + g.getNumCorrect() + "/" + (g.getTotalQuestions() - 1));
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    btn_start.setVisibility(View.VISIBLE);
+                }
+            }, 4000);
+
+        }
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Button start_button = (Button) view;
                 start_button.setVisibility(View.INVISIBLE);
+                secRemaining = 30;
+                g = new Game();
                 nextTurn();
+                timer.start();
             }
         };
         View.OnClickListener answerButtonClickListener = new View.OnClickListener() {
