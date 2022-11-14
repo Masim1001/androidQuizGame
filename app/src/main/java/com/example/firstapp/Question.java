@@ -23,6 +23,7 @@ public class Question {
         this.firstNumber = randNumber.nextInt(upperLimit);
         this.secondNumber = randNumber.nextInt(upperLimit);
         this.answer = this.firstNumber + this.secondNumber;
+        this.questionPhrase=firstNumber + "+" + secondNumber + "=";
 
         this.answerPosition = randNumber.nextInt(4);
         this.answerArray = new int[] {0,1,2,3};
