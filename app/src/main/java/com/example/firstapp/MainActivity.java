@@ -3,6 +3,7 @@ package com.example.firstapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -34,6 +35,24 @@ public class MainActivity extends AppCompatActivity {
         tv_timer.setText("0Sec");
         tv_questions.setText("");
         tv_bottomMsg.setText("Press Go");
-        tv_score.setText("0 points");
+
+        View.OnClickListener startButtonClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Button start_button = (Button) view;
+                start_button.setVisibility(View.INVISIBLE);
+                startGame();
+            }
+        };
+        btn_start.setOnClickListener(startButtonClickListener);
+    }
+
+    private void startGame(){
+        //create a new Question
+        //set text on answer buttons
+        //enable answer buttons
+        //start the timer
+
+
     }
 }
